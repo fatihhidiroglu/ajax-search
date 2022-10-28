@@ -14,7 +14,7 @@
                 $where .= "WHERE ca.model LIKE '$input%'";
                 break;
             case 'engine':
-                $where .= "WHERE ca.engine LIKE '$input%'";
+                $where .= "WHERE ca.engine LIKE '%$input%'";
                 break;
             case 'fuel_type':
                 $where .= "WHERE ca.fuel_type LIKE '$input%'";
@@ -28,7 +28,7 @@
             default :
                 $where .= "WHERE ca.brand LIKE '$input%'
                 OR ca.model LIKE '$input%'
-                OR ca.engine LIKE '$input%'
+                OR ca.engine LIKE '%$input%'
                 OR ca.fuel_type LIKE '$input%'
                 OR ca.model_year  LIKE '$input%'
                 OR c.color LIKE '$input%'";

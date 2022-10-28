@@ -26,29 +26,27 @@
         </div>
     </div>
 
-    <div id="search_result"></div>
+    <div id="search_result">
+       <?php include('list.php'); ?>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
         $(document).ready(function() {
             function searchFilter(input, filter) {
-                if (input != "") {
-                    $.ajax({
-                        url: "search.php",
-                        method: "POST",
-                        data: {
-                            input: input,
-                            filter: filter
-                        },
-                        
-                        success: function(data) {
-                            $("#search_result").html(data);
-                            $("#search_result").css("display", "block");
-                        }
-                    });
-                } else {
-                    $("#search_result").css("display", "none");
-                }
+                $.ajax({
+                    url: "search.php",
+                    method: "POST",
+                    data: {
+                        input: input,
+                        filter: filter
+                    },
+                    
+                    success: function(data) {
+                        $("#search_result").html(data);
+                        $("#search_result").css("display", "block");
+                    }
+                });
             }
 
             $("#ajax_search").keyup(function() {
@@ -56,6 +54,7 @@
                 var filter = $('#filter').val();
                 searchFilter(input, filter);
             });
+            
             $("#filter").change(function() {
                 var input  = $('#ajax_search').val();
                 var filter = $(this).val();

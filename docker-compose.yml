@@ -51,6 +51,7 @@ services:
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     volumes:
+      - ./docker/mysql/initial-sql:/docker-entrypoint-initdb.d/dummy_data.sql
       - ./docker/mysql/persisted-volume:/var/lib/mysql
     networks:
       - app-network
