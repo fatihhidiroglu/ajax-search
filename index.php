@@ -31,10 +31,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
         $(document).ready(function() {
-            $("#ajax_search").keyup(function() {
-                var input  = $(this).val();
-                var filter = $('#filter').val();
-
+            function searchFilter(input, filter) {
                 if (input != "") {
                     $.ajax({
                         url: "search.php",
@@ -48,10 +45,21 @@
                             $("#search_result").html(data);
                             $("#search_result").css("display", "block");
                         }
-                    })
+                    });
                 } else {
                     $("#search_result").css("display", "none");
                 }
+            }
+
+            $("#ajax_search").keyup(function() {
+                var input  = $(this).val();
+                var filter = $('#filter').val();
+                searchFilter(input, filter);
+            });
+            $("#filter").change(function() {
+                var input  = $('#ajax_search').val();
+                var filter = $(this).val();
+                searchFilter(input, filter);
             });
         });
     </script>

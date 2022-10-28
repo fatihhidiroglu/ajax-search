@@ -36,7 +36,7 @@
                 
         }
 
-        $query = "SELECT *
+        $query = "SELECT ca.*, c.color
             FROM cars AS ca 
             JOIN colors AS c ON c.id = ca.color
             $where ";
