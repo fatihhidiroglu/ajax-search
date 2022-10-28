@@ -12,34 +12,46 @@
         <div class="text-center mt-5 mb-4">
             <h2>PHP Ajax Search</h2>
         </div>
-
-        <input type="text" name="live_search" id="live_search" class="form-control" autocomplete="off" placeholder="Search...">
+        <div class="input-group mt-3 mb-3">
+            <input type="text" class="form-control" name="ajax_search" id="ajax_search" autocomplete="off" placeholder="Search...">
+            <select class="input-group-prepend" name="filter" id="filter">
+                <option value="all">All</option>
+                <option value="brand">Brand</option>
+                <option value="model">Model</option>
+                <option value="engine">Engine</option>
+                <option value="fuel_type">Fuel Type</option>
+                <option value="model_year">Model Year</option>
+                <option value="color">Color</option>
+            </select>
+        </div>
     </div>
 
-    <div id="searchresult"></div>
+    <div id="search_result"></div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
     <script>
         $(document).ready(function() {
-            $("#live_search").keyup(function() {
-                var input= $(this).val();
-                
-                if(input != "") {
+            $("#ajax_search").keyup(function() {
+                var input  = $(this).val();
+                var filter = $('#filter').val();
+
+                if (input != "") {
                     $.ajax({
                         url: "search.php",
                         method: "POST",
-                        data: {input: input},
+                        data: {
+                            input: input,
+                            filter: filter
+                        },
                         
                         success: function(data) {
-                            $("#searchresult").html(data);
+                            $("#search_result").html(data);
+                            $("#search_result").css("display", "block");
                         }
                     })
                 } else {
-                    $("#searchresult").css("display", "block");
+                    $("#search_result").css("display", "none");
                 }
-
-
             });
         });
     </script>
