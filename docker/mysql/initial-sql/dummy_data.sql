@@ -24,7 +24,7 @@ VALUES
 	(5, 'Alfa Romeo', 'Brera', '3.2', 'Gasoline', '2007', 5),
 	(6, 'Alfa Romeo', 'Guiletta', '1.6 JTD', 'Diesel', '2016', 8),
 	(7, 'Audi', 'A3', '1.4 TFSI', 'Gasoline', '2018', 1),
-	(8, 'Audi', 'A3', '1.8 TSFI', 'Gasoline', '2009', 3)
+	(8, 'Audi', 'A3', '1.8 TSFI', 'Gasoline', '2009', 3),
 	(9, 'BMW', '3 Serisi', '318d', 'Diesel', '2017', 2),
 	(10, 'BMW', '3 Serisi', '320d xDrive', 'Diesel', '2013', 1),
 	(11, 'BMW', '5 Serisi', '523i', 'Gasoline', '1998', 5);
